@@ -5,7 +5,7 @@ RSpec.feature "user can sign up" do
     visit root_path
     expect(current_path).to eq(login_path)
     
-    click_button "Sign Up"
+    click_link "Sign Up"
     expect(current_path).to eq(new_user_path)
     expect(page).to_not have_content("Welcome, Tommasina")
     expect(page).to_not have_content("Logout")
@@ -13,7 +13,7 @@ RSpec.feature "user can sign up" do
     fill_in "Username", with: "Tommasina"
     fill_in "Password", with: "password"
     fill_in "Email", with: "example@gmail.com"
-    fill_in "Password Confirmation", with: "password"
+    fill_in "Password confirmation", with: "password"
     click_on "Create Account"
     
     expect(current_path).to eq(links_path)
