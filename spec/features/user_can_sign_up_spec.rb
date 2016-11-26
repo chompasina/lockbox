@@ -18,6 +18,6 @@ RSpec.feature "user can sign up" do
     
     expect(current_path).to eq(links_path)
     expect(page).to have_content("Welcome, Tommasina")
-    expect(page).to have_button("Logout")
+    expect(page).to have_link("Logout")
   end
 end
