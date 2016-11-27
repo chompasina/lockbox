@@ -4,4 +4,30 @@
   <%= link_to "Login", login_path %>
 <% end %>
 
-<h1>links</h1>
+<h1>LinkBox</h1>
+
+<h3>Add new link:</h3>
+<%= form_for Link.new do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :url, "URL" %>
+  <%= f.text_field :url %>
+  <%= f.submit "Add link" %>
+<% end %>
+
+<h3>Your Links</h3>
+<table>
+  <tr id="header-row">
+    <th>Title</th>
+    <th>Link</th>
+    <th>Read?</th>    
+  </tr>
+  <% @links.each do |link| %>
+  <tr data-id="<%= link.id %>">
+    <td> <%= link.title %> </td>
+    <td> <%= link.url %> </td>
+    <td> <%= link.read %> </td>
+  </tr>
+  <% end %>
+</table>
+  

@@ -5,6 +5,5 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
   end
-  # <factories for each model go here>
 end
 
