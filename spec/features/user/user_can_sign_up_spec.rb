@@ -27,14 +27,14 @@ RSpec.feature "Unauth. user can sign up" do
   end
   
   scenario "user must have a unique email address" do
-    user = create(:user) #creates first user with this email
+    user = create(:user, email: "person1@example.com") #creates first user with this email
     
     visit root_path    
     click_link "Sign Up"
     
     fill_in "Username", with: "Tommasina"
     fill_in "Password", with: "password"
-    fill_in "Email", with: "tom@gmail.com" #creates second user with this email
+    fill_in "Email", with: "person1@example.com" #creates second user with this email
     fill_in "Password confirmation", with: "password"
     click_on "Create Account"
     

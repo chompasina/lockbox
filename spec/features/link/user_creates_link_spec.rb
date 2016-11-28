@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature "user can create link" do
-  scenario "user is on links index page" do
+  before(:each) do
     user = create(:user)
     
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit root_path
-    
+  end
+  
+  scenario "user is on links index page" do
     fill_in "Title", with: "New York Times"
     fill_in "URL", with: "http://www.nytimes.com"
     click_button "Add link"
@@ -16,12 +18,13 @@ RSpec.feature "user can create link" do
     expect(Link.count).to eq(1)
   end
   
-  scenario "user gives a broken link" do
-    user = create(:user)
+  scenario "link has default status of false" do
+    link = create(:link)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    visit root_path
-    
+    expect(Link.last.read).to eq(false)
+  end
+  
+  scenario "user gives a broken link" do
     fill_in "Title", with: "New York Times"
     fill_in "URL", with: "broken.com"
     click_button "Add link"

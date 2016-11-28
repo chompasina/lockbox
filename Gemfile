@@ -24,6 +24,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
   gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :development, :test do
