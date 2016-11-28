@@ -15,19 +15,23 @@
   <%= f.submit "Add link" %>
 <% end %>
 
-<h3>Your Links</h3>
-<table>
-  <tr id="header-row">
-    <th>Title</th>
-    <th>Link</th>
-    <th>Read?</th>    
-  </tr>
-  <% @links.each do |link| %>
-  <tr data-id="<%= link.id %>">
-    <td> <%= link.title %> </td>
-    <td> <%= link.url %> </td>
-    <td> <%= link.read %> </td>
-  </tr>
-  <% end %>
-</table>
+<div class="links-list">
+  <h3>Your Links</h3>
+  <table>
+    <tr id="header-row">
+      <th>Title</th>
+      <th>Link</th>
+      <th>Read?</th> 
+      <th>Update Status</th> 
+    </tr>
+    <% @links.each do |link| %>
+    <tr data-id="<%= link.id %>">
+      <td> <%= link.title %> </td>
+      <td> <%= link.url %> </td>
+      <td> <%= link.read %> </td>
+      <td id="toggle-link-status"><button class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
   
