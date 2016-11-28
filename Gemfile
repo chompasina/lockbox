@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'validate_url'
+gem 'responders'
 gem 'rails_12factor', group: :production
 
 group :test do
