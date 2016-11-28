@@ -34,4 +34,20 @@ RSpec.feature "user can create link" do
     expect(page).to_not have_content("broken.com")
     expect(Link.count).to eq(0)
   end
+  
+  scenario "user sees only their own links" do
+    user1 = create(:user)
+    link1 = create(:link, user: user1, url: "http://www.mylink.com", title: "My Link")
+    
+    user2 = create(:user)
+    link2 = create(:link, user: user2, url: "http://www.notmylink.com", title: "Not my link")
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+    
+    visit root_path
+    expect(page).to have_content("My Link")
+    expect(page).to have_content("http://www.mylink.com")
+    expect(page).to_not have_content("Not my link")
+    expect(page).to_not have_content("http://www.notmylink.com")
+  end
 end
