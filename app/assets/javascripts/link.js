@@ -14,9 +14,9 @@ function changeStatus(){
 function toggleStatus(button){
   var status = $(button).data('status');
   var newStatus = !status;
-  // storeNewStatus(button, newStatus);
+  storeNewStatus(button, newStatus);
 }
 
-// function storeNewStatus(button, newStatus){
-//   
-// }
+function storeNewStatus(button, newStatus){
+    var linkId = $(button).data('id')
+}

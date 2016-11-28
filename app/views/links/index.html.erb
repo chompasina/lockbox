@@ -29,7 +29,7 @@
       <td> <%= link.title %> </td>
       <td> <%= link.url %> </td>
       <td> <%= link.read %> </td>
-      <td id="toggle-link-status"><button class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
+      <td id="toggle-link-status"><button data-id="<%= link.id %>" class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
     </tr>
     <% end %>
   </table>
