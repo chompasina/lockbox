@@ -25,11 +25,11 @@
       <th>Update Status</th> 
     </tr>
     <% @links.each do |link| %>
-    <tr data-id="<%= link.id %>">
-      <td> <%= link.title %> </td>
-      <td> <%= link.url %> </td>
-      <td> <%= link.read %> </td>
-      <td id="toggle-link-status"><button data-id="<%= link.id %>" class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
+    <tr data-id="<%= link.id %>" id='status-<%=link.read%>' >
+      <td class='title-field' data-id="<%= link.id %>"> <%= link.title %> </td>
+      <td class='url-field' data-id="<%= link.id %>"> <%= link.url %> </td>
+      <td id='link-status-<%=link.id%>'>Read? <%= link.read %></td>
+      <td class="button" id="toggle-link-status"><button data-id="<%= link.id %>" class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
     </tr>
     <% end %>
   </table>
