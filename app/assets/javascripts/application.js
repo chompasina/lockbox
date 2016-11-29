@@ -16,6 +16,7 @@
 
 $(document).ready(function(){
   changeStatus();
+  search();
   // editTitle();
   // editTitleOnClick();
   // // editUrl();

@@ -6,6 +6,10 @@
 
 <h1>LinkBox</h1>
 
+<div class="search">
+  <p>Search: <input type="text" name="search" id="search-bar"> </p>
+</div>
+
 <h3>Add new link:</h3>
 <%= form_for Link.new do |f| %>
   <%= f.label :title %>
@@ -26,7 +30,7 @@
       <th>Edit</th> 
     </tr>
     <% @links.each do |link| %>
-    <tr data-id="<%= link.id %>" id='status-<%=link.read%>' >
+    <tr class="link" data-id="<%= link.id %>" id='status-<%=link.read%>' >
       <td class='title-field' data-id="<%= link.id %>" contenteditable="true"> <%= link.title %> </td>
       <td class='url-field' data-id="<%= link.id %>" contenteditable="true"> <%= link.url %> </td>
       <td id='link-status-<%=link.id%>'>Read? <%= link.read %></td>
