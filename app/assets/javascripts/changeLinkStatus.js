@@ -1,10 +1,13 @@
 $(document).ready(function(){
   changeStatus();
+  editTitle();
+  // editTitleOnClick();
+  // editUrl();
+  // editUrlOnClick();
 })
 
 function changeStatus(){
-  $('.links-list').on('click', '#toggle-link-status', function(e){
-    debugger;
+  $('#links-list').on('click', '#toggle-link-status', function(e){
     console.log("hit")
     var button = e.target;
     toggleStatus(button);
