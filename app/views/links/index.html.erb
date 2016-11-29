@@ -18,7 +18,7 @@
 </div>
 
 <div class="sort">
-<button type="button" class="sort" name="sort">Sort</button>
+  <button type="button" class="sort-button" name="sort">Sort</button>
 </div>
 
 <h3>Add new link:</h3>
@@ -40,6 +40,7 @@
       <th>Update Status</th> 
       <th>Edit</th> 
     </tr>
+    <tbody id="links">
     <% @links.each do |link| %>
     <tr class="link" data-id="<%= link.id %>" id='status-<%=link.read%>' data-status="<%=link.read%>">
       <td class='title-field' data-id="<%= link.id %>" contenteditable="true"> <%= link.title %> </td>
@@ -49,6 +50,7 @@
       <td class="edit"> <%= link_to "Edit", edit_link_path(link) %> </td>
     </tr>
     <% end %>
+    </tbody>
   </table>
 </div>
   

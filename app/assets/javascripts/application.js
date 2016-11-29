@@ -22,4 +22,5 @@ $(document).ready(function(){
   // // editUrl();
   // editUrlOnClick();
   filter();
+  sort();
 })
