@@ -21,4 +21,5 @@ $(document).ready(function(){
   // editTitleOnClick();
   // // editUrl();
   // editUrlOnClick();
+  filter();
 })
