@@ -10,7 +10,7 @@ RSpec.feature "User can change link status", :js => true do
     fill_in "URL", with: "http://www.nytimes.com"
     click_button "Add link"
     
-    within(".links-list") do
+    within("#links-list") do
       expect(Link.last.read).to eq(false)
       expect(page).to have_content("Read? false")
       click_button "Mark as Read"

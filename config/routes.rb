@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "links#index"
   
-  resources :links, only: [:index, :new, :create]
+  resources :links, only: [:index, :new, :create, :edit, :update]
   resources :users, only: [:new, :create]
   
   get '/login', to: "sessions#new"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      resources :links
+      resources :links, only: [:create, :index, :update]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
