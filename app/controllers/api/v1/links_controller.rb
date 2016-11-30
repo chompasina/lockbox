@@ -1,8 +1,9 @@
 class Api::V1::LinksController < ApplicationController
-  respond_to :html, :json
+  respond_to :json, :html
   
   def index
-    respond_with Link.all
+    links = current_user.links.order(:title)
+    resnder json: links
   end
   
   def show
@@ -10,11 +11,23 @@ class Api::V1::LinksController < ApplicationController
   end
   
   def update
-    respond_with Link.update(params[:id], link_params), location: nil
+    link = Link.find(params[:id])
+    if link.update(link_params)
+      render json: link
+    else 
+      render :json => { :errors => link.errors.full_messages }, :status => 422
+    end
+    # respond_with Link.update(params[:id], link_params), location: nil
   end
   
   def create
-    respond_with Link.create(link_params), location: nil
+    link = Link.new(link_params)
+    if link.save
+      render json: link
+    else 
+      render :json => { :errors => link.errors.full_messages }, :status => 422
+    end
+    # respond_with Link.create(link_params), location: nil
   end
   
   def destroy
@@ -24,6 +37,6 @@ class Api::V1::LinksController < ApplicationController
   private
   
     def link_params
-      params.permit(:read, :title, :url, :id)
+      params.permit(:read, :title, :url, :id, :user_id)
     end
 end
