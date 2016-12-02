@@ -1,0 +1,14 @@
+<h1>Link: <%= @link.title %></h1>
+<p>
+
+URL: <%= @link.url %>
+</p>
+<p>
+Read? <%= @link.read %>
+</p>
+<p>
+Tags:
+<% @link.tags.each do |tag| %>
+  <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</p>

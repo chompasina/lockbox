@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127155505) do
+ActiveRecord::Schema.define(version: 20161130011830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "link_tags", force: :cascade do |t|
+    t.integer  "link_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_link_tags_on_link_id", using: :btree
+    t.index ["tag_id"], name: "index_link_tags_on_tag_id", using: :btree
+  end
 
   create_table "links", force: :cascade do |t|
     t.string   "url"
@@ -25,6 +34,12 @@ ActiveRecord::Schema.define(version: 20161127155505) do
     t.index ["user_id"], name: "index_links_on_user_id", using: :btree
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
@@ -34,5 +49,7 @@ ActiveRecord::Schema.define(version: 20161127155505) do
     t.string   "password"
   end
 
+  add_foreign_key "link_tags", "links"
+  add_foreign_key "link_tags", "tags"
   add_foreign_key "links", "users"
 end
