@@ -13,6 +13,15 @@ FactoryGirl.define do
     user 
   end
   
+  factory :link_tag do
+    link
+    tag
+  end
+  
+  factory :tag do
+    name "important"
+  end  
+  
   sequence :email do |n|
     "person#{n}@example.com"
   end

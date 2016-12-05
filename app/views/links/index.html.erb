@@ -39,6 +39,7 @@
       <th>Title</th>
       <th>Link</th>
       <th>Read?</th> 
+      <th>Tags</th> 
       <th>Update Status</th> 
       <th>Edit</th> 
     </tr>
@@ -48,6 +49,10 @@
       <td class='title-field' data-id="<%= link.id %>" contenteditable="true"> <%= link.title %> </td>
       <td class='url-field' data-id="<%= link.id %>" contenteditable="true"> <%= link.url %> </td>
       <td class='status' id='link-status-<%=link.id%>'>Read? <%= link.read %></td>
+      <td> <% link.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+        <button class="delete-tag btn btn-danger" id=" <%= LinkTag.where(tag_id: tag.id).first.id %> " data-id="<%=tag.id %>" name="button">X</button><br>
+      <% end %> </td>
       <td class="button" id="toggle-link-status"><button data-id="<%= link.id %>" class="button" data-status="<%=link.read%>"><% if link.read %>Mark as Unread<% else %> Mark as Read <% end %></button></td>
       <td class="edit"> <%= link_to "Edit", edit_link_path(link) %> </td>
     </tr>

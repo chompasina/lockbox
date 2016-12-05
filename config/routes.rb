@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      resources :links, only: [:create, :index, :update]
-      # resources :tags, only: [:index, :create]
+      resources :links, only: [:create, :index, :edit, :update]
+      resources :link_tags, only: [:destroy]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -15,7 +15,7 @@ RSpec.feature "User can change link status", :js => true do
       expect(page).to have_content("Read? false")
       click_button "Mark as Read"
       wait_for_ajax
-      
+      # sleep(2)
       expect(Link.last.read).to eq(true)
       expect(page).to_not have_content("Read? false")
       expect(page).to have_content("Read? true")
