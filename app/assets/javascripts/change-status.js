@@ -8,7 +8,9 @@ function changeStatus(){
 
 function toggleStatus(button){
   var status = $(button).data('status');
-  var newStatus = !status;
+  console.log(status)
+  var newStatus = (!status);
+  console.log(newStatus);
   storeNewStatus(button, newStatus);
 }
 
